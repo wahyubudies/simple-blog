@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
       <div class="col-6">        
         <a href="{{ route('post.create') }}" class="btn btn-sm btn-primary ml-4 mt-5 mb-3">Add post*</a>        
-        <ol>    
+        <ul>    
           @foreach ($posts as $post)
           <li class="mb-4">
             <img src="{{ Storage::url('public/posts/').$post->image }}" class="rounded" style="width: 150px">
@@ -24,12 +24,12 @@
               <a href="{{route('post.edit', $post->id)}}" class="btn btn-sm btn-secondary">edit</a>                
               @csrf
               @method('DELETE')
-              <a class="btn btn-danger btn-sm">Delete</a>
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
             </form>
 
           </li>    
           @endforeach
-        </ol>
+        </ul>
       </div>
     </div>  
   </div>
