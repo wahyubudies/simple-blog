@@ -54,8 +54,16 @@ class PostController extends Controller
             'title'     => 'required',
             'content'   => 'required'
         ]);
-        $post = Post::findOrFail($id);
-        
+
+        try{
+            $post = Post::findOrFail($id);
+        }
+        catch(\Exception $e)
+        {   
+            return response()->json(['message' => 'Id not found :)']);
+            dd($e);            
+        }
+
         if($req->file('image') == "")
         {
             $post->update([
@@ -74,30 +82,22 @@ class PostController extends Controller
                 'title' => $req->title,
                 'content' => $req->content 
             ]);                        
-        }
-
-        if($post)
-        {
-            return redirect()->route('post.index');
-        }
-        else
-        {
-            return redirect()->route('post.edit');
-        }
+        }    
+        return redirect()->route('post.edit', $post->id);        
     }
     public function destroy($id)
-    {
-        $post = Post::findOrFail($id);
+    {        
+        try
+        {
+            $post = Post::findOrFail($id);                        
+        }
+        catch(\Exception $e)
+        {   
+            return response()->json(['message' => 'Id not found :)']);
+            dd($e);            
+        }    
         Storage::disk('local')->delete('public/posts/'.$post->image);
-        $post->delete();
-
-        if($post)
-        {
-            return redirect()->route('post.index');
-        }
-        else
-        {
-            return redirect()->route('post.index');
-        }
+        $post->delete();             
+        return redirect()->route('post.index');
     }
 }
