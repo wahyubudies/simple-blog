@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  @yield('title')
   <!-- Favicon -->
   <link rel="icon" href="/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
@@ -15,6 +15,8 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="/css/argon.css?v=1.2.0" type="text/css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body>
   @include('layouts.sidenav')
@@ -270,5 +272,8 @@
   <script src="/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="/js/argon.js?v=1.2.0"></script>
+  <!-- Toastr -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  @yield('toastr')
 </body>
 </html>

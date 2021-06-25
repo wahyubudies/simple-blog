@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('title')
-<title>Post - Simple Blog</title>
+<title>Tag - Simple Blog</title>
 @endsection
 @section('content')
 <!-- Header -->
@@ -13,12 +13,12 @@
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
               <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Post</li>
+              <li class="breadcrumb-item active" aria-current="page">Tag</li>
             </ol>
           </nav>
         </div>
         <div class="col-lg-6 col-5 text-right">          
-          <a href="{{route('post.create')}}" class="btn btn-neutral">Add Data</a>
+          <a href="{{route('tag.create')}}" class="btn btn-neutral">Add Data</a>
         </div>
       </div>
     </div>
@@ -38,29 +38,21 @@
             <thead class="thead-light">
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">Image</th>
-                <th scope="col">Title</th>
-                <th scope="col">Content</th>
+                <th scope="col">Tag Name</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody class="list">
-              @foreach ($posts as $post)                              
+              @foreach ($tags as $tag)                              
                   <tr>                  
                     <th scope="row">
                       {{$loop->iteration}}
                     </th>
                     <td>
-                      <img src="{{ Storage::url('public/posts/').$post->image }}" class="rounded" style="width: 150px">
+                      {{ \Str::limit($tag->tag_name, 30) }}
                     </td>
                     <td>
-                      {{ \Str::limit($post->title, 30) }}
-                    </td>
-                    <td>
-                      {{ \Str::limit($post->content,50) }}
-                    </td>
-                    <td>
-                      <a href="{{ route('post.edit', $post->id) }}" class="btn btn-secondary btn-sm">                        
+                      <a href=" {{route('tag.edit', $tag->id)}} " class="btn btn-secondary btn-sm">                        
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                       </a>
                     </td>                    
@@ -101,3 +93,12 @@
   @include('layouts.footer')
 </div>
 @endsection('content')
+@section('toastr')
+  <script>      
+      @if(session()->has('success'))      
+        toastr.success('{{ session('success') }}', 'SUCCESS!'); 
+      @elseif(session()->has('error'))
+        toastr.error('{{ session('error') }}', 'FAILED!');           
+      @endif
+  </script>
+@endsection('toastr')

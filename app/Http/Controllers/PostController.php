@@ -45,7 +45,14 @@ class PostController extends Controller
     }
     public function edit($id)
     {        
-        $post = Post::findOrFail($id);
+        try{
+            $post = Post::findOrFail($id);
+        }
+        catch(\Exception $e)
+        {
+            return response()->json(['message' => 'Id not found :)']);
+            dd($e);            
+        }        
         return view('post.edit', compact('post'));
     }
     public function update(Request $req, $id)

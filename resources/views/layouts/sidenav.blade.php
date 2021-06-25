@@ -13,13 +13,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ (Request::path() ? 'active' : '') }}" href="{{route('post.index')}}">
+              <a class="nav-link {{ (request()->is('post*') ? 'active' : '') }}" href="{{route('post.index')}}">
                 <i class="ni ni-planet text-orange"></i>
                 <span class="nav-link-text">Post</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="#">
+              <a class="nav-link {{ (request()->is('tag*') ? 'active' : '') }}" href="{{route('tag.index')}}">
                 <i class="ni ni-pin-3 text-primary"></i>
                 <span class="nav-link-text">Tag</span>
               </a>
