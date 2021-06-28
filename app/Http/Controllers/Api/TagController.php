@@ -42,13 +42,13 @@ class TagController extends Controller
             'data'          => $tag
         ]);
     }
-    public function update(Request $req, $id)
+    public function update(Request $req)
     {
-        $this->validate($req, [
+        $this->validate($req, [            
             'tag_name' => 'required'
         ]);
         try{
-            $tag = Tag::findOrFail($id);
+            $tag = Tag::findOrFail($req->id);
             $tag->update([
                 'tag_name' => $req->tag_name,
                 'tag_slug' => Str::slug($req->tag_name)

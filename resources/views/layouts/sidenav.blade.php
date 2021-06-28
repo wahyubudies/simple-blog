@@ -25,7 +25,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link {{ (request()->is('category*') ? 'active' : '') }}" href="{{route('category.index')}}">
                 <i class="ni ni-single-02 text-yellow"></i>
                 <span class="nav-link-text">Category</span>
               </a>

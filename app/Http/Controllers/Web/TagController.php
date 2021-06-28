@@ -11,7 +11,7 @@ class TagController extends Controller
 {
     public function index()
     {
-        $tags = Tag::latest()->get();
+        $tags = Tag::latest()->simplePaginate(10);        
         return view('tag.index', compact('tags'));
     }
     public function create()

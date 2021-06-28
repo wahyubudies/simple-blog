@@ -13,12 +13,12 @@
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
               <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Tag</li>
+              <li class="breadcrumb-item active" aria-current="page">Category</li>
             </ol>
           </nav>
         </div>
         <div class="col-lg-6 col-5 text-right">          
-          <a href="{{route('tag.create')}}" class="btn btn-neutral">Add Data</a>
+          <a href="{{route('category.create')}}" class="btn btn-neutral">Add Data</a>
         </div>
       </div>
     </div>
@@ -38,21 +38,21 @@
             <thead class="thead-light">
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">Tag Name</th>
+                <th scope="col">Category Name</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody class="list">
-              @foreach ($tags as $tag)                              
+              @foreach ($categories as $category)
                   <tr>                  
                     <th scope="row">
                       {{$loop->iteration}}
                     </th>
                     <td>
-                      {{ \Str::limit($tag->tag_name, 30) }}
+                      {{ \Str::limit($category->category_name, 30) }}
                     </td>
                     <td>
-                      <a href=" {{route('tag.edit', $tag->id)}} " class="btn btn-secondary btn-sm float-right">                        
+                      <a href=" {{route('category.edit', $category->id)}} " class="btn btn-secondary btn-sm">                        
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                       </a>
                     </td>                    
@@ -60,11 +60,33 @@
               @endforeach
             </tbody>
           </table>
-        </div>        
+        </div>
         <!-- Card footer -->
-        <div class="card-footer py-4 d-flex justify-content-end">
-          {{ $tags->links() }}
-        </div>        
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
