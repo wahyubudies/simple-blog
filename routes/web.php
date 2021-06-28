@@ -36,14 +36,6 @@ Route::name('post.')->group(function(){
     Route::delete('post/{id}', 'Web\PostController@destroy')->name('destroy');
 });
 // Route Tag
-// Route::namespace('App\Http\Controllers\Web')->name('tag.')->group(function(){
-//     Route::get('/tag', [TagController::class, 'index'])->name('index');    
-//     Route::get('/tag/create', [TagController::class, 'create'])->name('create');
-//     Route::post('/tag', [TagController::class, 'store'])->name('store');
-//     Route::get('/tag/{id}/edit', [TagController::class, 'edit'])->name('edit');
-//     Route::put('/tag/{id}',[TagController::class, 'update'])->name('update');
-//     Route::delete('/tag/{id}', [TagController::class, 'destroy'])->name('destroy');
-// });
 Route::name('tag.')->group(function(){
     Route::get('tag', 'Web\TagController@index')->name('index');    
     Route::get('tag/create', 'Web\TagController@create')->name('create');
@@ -51,4 +43,14 @@ Route::name('tag.')->group(function(){
     Route::get('tag/{id}/edit', 'Web\TagController@edit')->name('edit');
     Route::put('tag/{id}','Web\TagController@update')->name('update');
     Route::delete('tag/{id}', 'Web\TagController@destroy')->name('destroy');
+});
+
+// Route Category
+Route::name('category.')->group(function(){
+    Route::get('category', 'Web\CategoryController@index')->name('index');    
+    Route::get('category/create', 'Web\CategoryController@create')->name('create');
+    Route::post('category', 'Web\CategoryController@store')->name('store');
+    Route::get('category/{id}/edit', 'Web\CategoryController@edit')->name('edit');
+    Route::put('category/{id}','Web\CategoryController@update')->name('update');
+    Route::delete('category/{id}', 'Web\CategoryController@destroy')->name('destroy');
 });
