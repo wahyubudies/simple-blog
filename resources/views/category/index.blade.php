@@ -52,7 +52,7 @@
                       {{ \Str::limit($category->category_name, 30) }}
                     </td>
                     <td>
-                      <a href=" {{route('category.edit', $category->id)}} " class="btn btn-secondary btn-sm">                        
+                      <a href=" {{route('category.edit', $category->id)}} " class="btn btn-secondary btn-sm float-right">                        
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                       </a>
                     </td>                    
