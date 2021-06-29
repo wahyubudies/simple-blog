@@ -11,8 +11,9 @@ class TagController extends Controller
 {
     public function index(Request $req)
     {   
+        //ini adalah perubahan
         $key = trim($req->q);
-        if($key){
+        if($key){                        
             $tags = Tag::where('tag_name', 'LIKE', "%$key%")->paginate();                        
         }else{
             $tags = Tag::latest()->paginate(10);                    
