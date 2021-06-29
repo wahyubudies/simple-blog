@@ -9,9 +9,14 @@ use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
-    public function index()
-    {
-        $tags = Tag::latest()->simplePaginate(10);        
+    public function index(Request $req)
+    {   
+        $key = trim($req->q);
+        if($key){
+            $tags = Tag::where('tag_name', 'LIKE', "%$key%")->paginate();                        
+        }else{
+            $tags = Tag::latest()->paginate(10);                    
+        }        
         return view('tag.index', compact('tags'));
     }
     public function create()

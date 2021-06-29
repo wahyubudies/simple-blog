@@ -9,11 +9,16 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $req)
     {
-        $categories = Category::latest()->simplePaginate(10);
+        $key = trim($req->q);
+        if($key){            
+            $categories = Category::where('category_name', 'LIKE', "%$key%")->paginate();            
+        }else{
+            $categories = Category::latest()->paginate(10);            
+        }         
         return view('category.index', compact('categories'));
-    }
+    }   
     public function create()
     {
         return view('category.create');

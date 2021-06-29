@@ -17,6 +17,8 @@ class TagController extends Controller
             'message' => 'List Data Tag',
             'data'    => $tag
         ]);
+        // $tag_paginate = Tag::paginate();
+        // return $tag_paginate->currentPage();
     }
     public function store(Request $req)
     {
